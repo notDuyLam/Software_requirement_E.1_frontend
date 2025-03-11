@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống Quản lý Sinh viên</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>HỆ THỐNG QUẢN LÝ SINH VIÊN</h1>
+        </header>
+
+        <div class="main-content">
+            <div class="card">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Tìm kiếm theo MSSV hoặc Họ tên">
+                    <button class="btn btn-primary" id="searchBtn">Tìm kiếm</button>
+                    <button class="btn btn-success" id="addStudentBtn">Thêm Sinh viên</button>
+                </div>
+
+                <div id="notification" class="notification hide"></div>
+
+                <div class="table-responsive">
+                    <table id="studentTable">
+                        <thead>
+                            <tr>
+                                <th>MSSV</th>
+                                <th>Họ tên</th>
+                                <th>Ngày sinh</th>
+                                <th>Giới tính</th>
+                                <th>Khoa</th>
+                                <th>Khóa</th>
+                                <th>Tình trạng</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentList">
+                            <!-- Student data will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Form for Add/Edit Student -->
+        <div id="studentModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modalTitle">Thêm sinh viên mới</h2>
+
+                <form id="studentForm">
+                    <input type="hidden" id="editMode" value="false">
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="id">Mã số sinh viên *</label>
+                            <input type="text" id="id" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fullName">Họ tên *</label>
+                            <input type="text" id="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dob">Ngày tháng năm sinh *</label>
+                            <input type="date" id="dob" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender">Giới tính *</label>
+                            <select id="gender" required>
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                                <option value="Khác">Khác</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="faculty">Khoa *</label>
+                            <select id="faculty" required>
+                                <option value="Khoa Luật">Khoa Luật</option>
+                                <option value="Khoa Tiếng Anh thương mại">Khoa Tiếng Anh thương mại</option>
+                                <option value="Khoa Tiếng Nhật">Khoa Tiếng Nhật</option>
+                                <option value="Khoa Tiếng Pháp">Khoa Tiếng Pháp</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="schoolYear">Khóa *</label>
+                            <input type="text" id="schoolYear" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="program">Chương trình</label>
+                            <input type="text" id="program">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Địa chỉ</label>
+                            <textarea id="address" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Số điện thoại *</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="status">Tình trạng sinh viên *</label>
+                            <select id="status" required>
+                                <option value="Đang học">Đang học</option>
+                                <option value="Đã tốt nghiệp">Đã tốt nghiệp</option>
+                                <option value="Đã thôi học">Đã thôi học</option>
+                                <option value="Tạm dừng học">Tạm dừng học</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 20px;">
+                        <button type="submit" class="btn btn-success">Lưu</button>
+                        <button type="button" class="btn btn-danger" id="cancelBtn">Hủy</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+
+</body>
+
+</html>
