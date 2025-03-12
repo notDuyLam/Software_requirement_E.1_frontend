@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     
         // Gọi API từ backend để lấy danh sách sinh viên
-        fetch("http://localhost:3000")
+        fetch("https://software-requirement-e-1-backend.onrender.com")
             .then(response => response.json())
             .then(data => {
                 renderStudents(data);
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (isEditMode) {
             // Update existing student via API
-            fetch(`http://localhost:3000/api/students/${studentData.id}`, {
+            fetch(`https://software-requirement-e-1-backend.onrender.com/api/students/${studentData.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         } else {
             // Add new student via API
-            fetch('http://localhost:3000/api/students', {
+            fetch('https://software-requirement-e-1-backend.onrender.com/api/students', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function editStudent(id) {
         editMode.value = 'true';
-        fetch(`http://localhost:3000/api/students/${id}`)
+        fetch(`https://software-requirement-e-1-backend.onrender.com/api/students/${id}`)
             .then(response => {
                 if (!response.ok){
                     throw new Error('Cannot find the student with ID:', id);
@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function deleteStudent(id) {
         if (confirm('Bạn có chắc muốn xóa sinh viên này?')) {
-            fetch(`http://localhost:3000/api/students/${id}`, { method: 'DELETE' })
+            fetch(`https://software-requirement-e-1-backend.onrender.com/api/students/${id}`, { method: 'DELETE' })
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Delete failed with status: ' + response.status);
@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         
         // Call the search API endpoint with the search query
-        fetch(`http://localhost:3000/api/search?q=${encodeURIComponent(searchValue)}`)
+        fetch(`https://software-requirement-e-1-backend.onrender.com/api/search?q=${encodeURIComponent(searchValue)}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Search failed with status: ' + response.status);
